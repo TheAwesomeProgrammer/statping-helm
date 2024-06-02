@@ -36,6 +36,12 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+          env:
+          - name: DB_PASS
+            valueFrom:
+              secretKeyRef:
+                name: {{ .Values.database.passwordSecretName  | quote }}
+                key: {{ .Values.database.passwordSecretKey  | quote }}
           envFrom:
             - configMapRef:
                 name: {{ template "statping.fullname" . }}
