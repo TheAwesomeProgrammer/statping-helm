@@ -14,3 +14,9 @@ data:
     READ_ONLY: {{ .Values.database.readOnly  | quote }}
     DISABLE_COLORS: {{ .Values.disableColors  | quote }}
     DEBUG: {{ .Values.debugMode | quote }}
+    {{- if .Values.removeAfter -}}
+    REMOVE_AFTER: {{ .Values.removeAfter | quote }}
+    {{- end -}}
+    {{- if .Values.cleanupInterval -}}
+    CLEANUP_INTERVAL: {{ .Values.cleanupInterval | quote }}
+    {{- end -}}
